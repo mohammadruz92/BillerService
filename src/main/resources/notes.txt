@@ -1,0 +1,32 @@
+        new PostPaidBillPullResponse(
+            new PostPaidBillPullResponse.MFEP(
+                new PostPaidBillPullResponse.MsgHeader(
+                    "TimeStamp",
+                    "nonEmptyString",
+                    new PostPaidBillPullResponse.TrsInf(12345, "BILPULRS"),
+                    new PostPaidBillPullResponse.Result(0, "Success", "SeverityCodes")),
+                new PostPaidBillPullResponse.MsgBody(
+                    1,
+                    List.of(
+                        new PostPaidBillPullResponse.BillRec(
+                            new PostPaidBillPullResponse.Result(0, "Success", "SeverityCodes"),
+                            new PostPaidBillPullResponse.AcctInfo("BillingNo", "BillNo"),
+                            "BillStatusCodes",
+                            "100.00",
+                            "2024-06-10T12:00:00",
+                            "2024-06-10T12:00:00",
+                            "2024-06-20T12:00:00",
+                            "2024-06-30T12:00:00",
+                            "2024-07-01T12:00:00",
+                            "ServiceType",
+                            "BillType",
+                            new PostPaidBillPullResponse.PmtConst(true, "1.00", "100.00"),
+                            List.of(
+                                new PostPaidBillPullResponse.SubPmt("50.00", 123, "AcctNo1"),
+                                new PostPaidBillPullResponse.SubPmt("50.00", 456, "AcctNo2")),
+                            1,
+                            new PostPaidBillPullResponse.AdditionalInfo(
+                                "CustName", "FreeText", "email@example.com", "+1234567890")))))));
+  }
+
+#############################

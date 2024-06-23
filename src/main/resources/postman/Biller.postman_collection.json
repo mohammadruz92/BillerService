@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "2994a640-d2a0-482d-ad34-e96b060daf29",
+		"name": "BLOM-Biller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36223702"
+	},
+	"item": [
+		{
+			"name": "postpaid-billPull",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mfep\": {\r\n    \"msgHeader\": {\r\n      \"tmStp\": \"2022-06-10T10:30:00\",\r\n      \"trsInf\": {\r\n        \"sdrCode\": 12345,\r\n        \"rcvCode\": 67890,\r\n        \"reqTyp\": \"BILPULRQ\"\r\n      },\r\n      \"guid\": \"abcdef123456\"\r\n    },\r\n    \"msgBody\": {\r\n      \"acctInfo\": {\r\n        \"billingNo\": \"ABC123\",\r\n        \"billNo\": \"XYZ789\"\r\n      },\r\n      \"serviceType\": \"serviceType\"\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/postpaid/billPull",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"postpaid",
+						"billPull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "prepaid-billPull",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"MFEP\": {\r\n    \"MsgHeader\": {\r\n      \"TmStp\": \"2022-06-01T12:34:56\",\r\n      \"TrsInf\": {\r\n        \"SdrCode\": 12345,\r\n        \"RcvCode\": 67890,\r\n        \"ReqTyp\": \"BILRPREPADVALRQ\"\r\n      },\r\n      \"GUID\": \"exampleGUID\"\r\n    },\r\n    \"MsgBody\": {\r\n      \"BillingInfo\": {\r\n        \"AcctInfo\": {\r\n          \"BillerCode\": 54321,\r\n          \"BillingNo\": \"1234567890\"\r\n        },\r\n        \"ServiceTypeDetails\": {\r\n          \"ServiceType\": \"ServiceTypeValue\",\r\n          \"PrepaidCat\": \"PrepaidCatValue\"\r\n        },\r\n        \"ValidationCode\": \"ValidationCodeValue\"\r\n      }\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/prepaid/billPull",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"prepaid",
+						"billPull"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "payment-notification",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"MFEP\": {\r\n    \"MsgHeader\": {\r\n      \"TmStp\": \"2022-12-31T23:59:59Z\",\r\n      \"GUID\": \"12345678-1234-1234-1234-1234567890AB\",\r\n      \"TrsInf\": {\r\n        \"SdrCode\": 123,\r\n        \"RcvCode\": 456,\r\n        \"ReqTyp\": \"TYPE_A\"\r\n      }\r\n    },\r\n    \"MsgBody\": {\r\n      \"BillingInfo\": {\r\n        \"AcctInfo\": {\r\n          \"BillingNo\": \"BILL-123\",\r\n          \"BillNo\": \"123456789\"\r\n        },\r\n        \"JOEBPPSTrx\": \"JOE-123\",\r\n        \"BankTrxId\": \"BANK-123\",\r\n        \"BankCode\": \"BANK\",\r\n        \"PmtStatus\": \"PAID\",\r\n        \"DueAmt\": \"100.00\",\r\n        \"PaidAmt\": \"100.00\",\r\n        \"FeesAmt\": \"5.00\",\r\n        \"FeesOnBiller\": true,\r\n        \"ProcessDate\": \"2022-12-31\",\r\n        \"StmtDate\": \"2022-12-31\",\r\n        \"AccessChannel\": \"WEB\",\r\n        \"PaymentMethod\": \"CREDIT_CARD\",\r\n        \"PaymentType\": \"ONLINE\",\r\n        \"SubPmts\": [\r\n          {\r\n            \"Amount\": \"50.00\",\r\n            \"SetBnkCode\": 123,\r\n            \"AcctNo\": \"ACCT-123\"\r\n          },\r\n          {\r\n            \"Amount\": \"50.00\",\r\n            \"SetBnkCode\": 456,\r\n            \"AcctNo\": \"ACCT-456\"\r\n          }\r\n        ],\r\n        \"ServiceTypeDetails\": {\r\n          \"ServiceType\": \"SERVICE_A\",\r\n          \"PrepaidCat\": \"CAT_A\"\r\n        },\r\n        \"PayerInfo\": {\r\n          \"IdType\": \"ID_TYPE_A\",\r\n          \"Id\": \"1234567890\",\r\n          \"Nation\": \"USA\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/notification",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"notification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth-signup",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJTdXBlckFkbWluIiwiaWF0IjoxNzE4MjY5MDQwLCJleHAiOjE3MTgzNTU0NDB9.mIhbG-af7eyarIGYHzoKB0snA4Pte5DWdGb2E_UA2os",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"abrwz\",\r\n  \"email\": \"superadminbiller@bloms.scom\",\r\n  \"role\": [\"ROLE_MODERATOR\"],\r\n  \"password\": \"SsPIJBjHf1S5SIo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth-signin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"SuperAdmin\",\r\n  \"password\": \"SsPIJBjHf1S5SIo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
